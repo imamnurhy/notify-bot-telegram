@@ -7,7 +7,7 @@ const router = require('./routes/route');
 const { encodeWithSecretKey } = require('./utils/crypto');
 
 bot.onText(/\/start/, (msg) => {
-    let message = `Hallo selamat datang di Api Telegram Bot`;
+    let message = `Hallo selamat datang di Api Telegram Bot!`;
     bot.sendMessage(msg.chat.id, message);
 });
 

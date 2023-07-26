@@ -26,7 +26,6 @@ bot.onText(/\/subscribe/, async (msg) => {
             ]
         }
     });
-
 });
 
 bot.on('callback_query', (query) => {

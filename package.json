@@ -1,0 +1,18 @@
+{
+  "name": "telegram-bot-api",
+  "version": "1.0.0",
+  "description": "Bot telegram for notification bug",
+  "main": "app.js",
+  "scripts": {
+    "start": "node -r dotenv/config src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "imamnurhy@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "node-telegram-bot-api": "^0.61.0"
+  }
+}

@@ -6,7 +6,7 @@ const bot = require('./utils/telegramBotConfig');
 const router = require('./routes/route');
 
 bot.onText(/\/start/, (msg) => {
-    let message = `Hallo selamat datang`;
+    let message = `Hallo selamat datang di Api Telegram Bot`;
     bot.sendMessage(msg.chat.id, message);
 });
 

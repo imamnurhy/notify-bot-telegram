@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/message', require('./message'))
+router.use('/setup', require('./setup'))
 
 module.exports = router;
 

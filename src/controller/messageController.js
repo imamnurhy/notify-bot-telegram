@@ -43,7 +43,8 @@ const MessageController = {
                 error: error
             });
         }
-    }
+    },
+
 }
 
 module.exports = MessageController;

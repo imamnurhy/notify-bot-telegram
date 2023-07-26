@@ -59,5 +59,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
 app.listen(port, () => {
-    console.log(`Server berjalan di http://localhost:${port}`);
+    console.log(`Listening: http://localhost:${port}`);
 });

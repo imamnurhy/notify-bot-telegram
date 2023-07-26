@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 
 const bot = require('./utils/telegramBotConfig');
 const router = require('./routes/route');
+const { encodeWithSecretKey } = require('./utils/crypto');
 
 bot.onText(/\/start/, (msg) => {
     let message = `Hallo selamat datang di Api Telegram Bot`;
@@ -36,7 +37,8 @@ bot.on('callback_query', (query) => {
     switch (action) {
         case 'request':
             let message = 'Berhasil membuat kode akses: ';
-            message += `<pre>${chatId}</pre>`;
+            var accessKey = encodeWithSecretKey(chatId);
+            message += `<pre>${accessKey}</pre>`;
 
             bot.sendMessage(chatId, message, {
                 parse_mode: 'HTML'

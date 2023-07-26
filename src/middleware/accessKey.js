@@ -1,9 +1,17 @@
+const { decodeWithSecretKey } = require("../utils/crypto");
+
 const accessKey = async function (req, res, next) {
     const apiKey = req.header('x-api-key');
 
-    if (apiKey !== process.env.APP_KEY) res.status(401).json({ status: 0, message: 'Unauthorized' });
+    if (!apiKey) res.status(401).json({ status: 0, message: 'Unauthorized' });
 
-    next();
+    try {
+        const chatId = decodeWithSecretKey(apiKey);
+        req.chatId = chatId;
+        next();
+    } catch (error) {
+        res.status(401).json({ status: 0, message: 'Unauthorized' });
+    }
 }
 
 module.exports = { accessKey };

@@ -1,9 +1,7 @@
-
 const bot = require('../utils/telegramBotConfig');
 
 const MessageController = {
     sendMessage: async (req, res) => {
-        const chatId = req.params.id;
         const { message, code, title, detail } = req.body;
 
         const currentDate = new Date().toLocaleDateString('id-ID', {
@@ -32,6 +30,7 @@ const MessageController = {
         text += `Message: ${message} `;
 
         try {
+            const chatId = req.chatId;
             bot.sendMessage(chatId, text, { parse_mode: 'HTML' });
             return res.status(200).json({
                 status: 0,

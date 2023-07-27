@@ -129,6 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Package 
+# Additional
 package-lock.json
 .vercel

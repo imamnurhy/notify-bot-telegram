@@ -9,7 +9,7 @@ const { accessKey } = require('../middleware/accessKey');
 router.use(accessKey); // Middleware Access Key
 
 router.post('/', [
-    body('title').optional().notEmpty().withMessage('Field title dalam data tidak boleh kosong.'),
+    body('title').notEmpty().withMessage('Field title dalam data tidak boleh kosong.'),
 
     body('detail').optional().notEmpty().withMessage('Field detail dalam data tidak boleh kosong.'),
 

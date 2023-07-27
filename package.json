@@ -2,19 +2,24 @@
   "name": "telegram-bot-api",
   "version": "1.0.0",
   "description": "Bot telegram for notification bug",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon -r dotenv/config src/app.js",
+    "start": "node src/index.js",
+    "dev": "nodemon -r dotenv/config src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "imamnurhy@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "node-telegram-bot-api": "^0.61.0"
+  },
+  "devDependencies": {
+    "ngrok": "^5.0.0-beta.2"
   }
 }

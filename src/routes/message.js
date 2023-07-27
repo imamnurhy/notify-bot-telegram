@@ -1,15 +1,15 @@
 const express = require('express');
+const router = express.Router();
 
 const { handleValidationErrors } = require('../utils/validation');
 const MessageController = require('../controller/messageController');
-const { body, param } = require('express-validator');
+const { body } = require('express-validator');
 const { accessKey } = require('../middleware/accessKey');
-const router = express.Router();
 
 router.use(accessKey); // Middleware Access Key
 
-router.post('/send', [
-    body('title').optional().notEmpty().withMessage('Field title dalam data tidak boleh kosong.'),
+router.post('/', [
+    body('title').notEmpty().withMessage('Field title dalam data tidak boleh kosong.'),
 
     body('detail').optional().notEmpty().withMessage('Field detail dalam data tidak boleh kosong.'),
 

@@ -29,6 +29,7 @@ const MessageController = {
             text += `🌐 <b>${code}</b>${emoticon}\n\n`;
         }
 
+        text += `🕰️ ${currentDate}` + ' ' + `${currentTime}\n`;
         text += `${lineSeparator}\n`;
         if (detail) {
             text += `${detail}\n`;
@@ -36,7 +37,6 @@ const MessageController = {
             text += `${message} \n`;
         }
         text += `${lineSeparator}\n`;
-        text += `🕰️ ${currentDate}` + ' ' + `${currentTime}\n`;
 
         if (detail) text += `🙊 ${message} `;
 

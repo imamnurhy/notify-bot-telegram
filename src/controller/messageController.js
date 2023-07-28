@@ -69,8 +69,8 @@ const MessageController = {
         _Italic Text_
         [Link Text](https://example.com)
         \`Inline Code\`
-        \`\`\`
-        Multi-line Code
+        \`\`\`json
+        ${JSON.stringify(detail, null, 2)}
         \`\`\`
         - List Item 1
         - List Item 2

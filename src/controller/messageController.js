@@ -8,14 +8,13 @@ const MessageController = {
         const lineSeparator = '-'.repeat(50);
 
         var text = '';
-        text = `<b>${title.toUpperCase()}</b>`;
-        text += `<b> | </b>`;
+        text = `<b>${title.toUpperCase()}</b>\n\n`;
 
         if (code) {
             var emoticon = '❤️';
-            if (code >= 200 && code <= 226) emoticon = '✅';
+            if (code >= 200 && code <= 226) emoticon = '🟢';
             if (code >= 400 && code <= 511) emoticon = '❗';
-            text += `🌐 <b>${code}</b>${emoticon}\n\n`;
+            text += `Status ${code + ' ' + emoticon} \n`;
         }
 
         if (datetime) {
@@ -29,9 +28,11 @@ const MessageController = {
         } else {
             text += `${message} \n`;
         }
-        text += `${lineSeparator}\n`;
 
-        if (detail) text += `🙊 ${message} `;
+        if (detail) {
+            text += `${lineSeparator}\n`;
+            text += `🙊 ${message} `;
+        }
 
         try {
             const chatId = req.chatId;

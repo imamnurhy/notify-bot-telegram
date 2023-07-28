@@ -38,36 +38,47 @@ const MessageController = {
         //     text += '•Status ' + `${code}` + `${emoticon}`;
         // }
 
-        const titleText = `# **${title.toUpperCase()} | ${httpStatus.getReasonPhrase(code)}**`;
+        // const titleText = `# **${title.toUpperCase()} | ${httpStatus.getReasonPhrase(code)}**`;
 
-        const messageText = `${message}`;
+        // const messageText = `${message}`;
 
-        let detailText = '';
-        if (detail) {
-            detailText = '## **Detail**';
-            detailText += `
-            \`\`\`json
-            ${JSON.stringify(detail, null, 2)}
-            \`\`\`
-            `;
-        }
+        // let detailText = '';
+        // if (detail) {
+        //     detailText = '## **Detail**';
+        //     detailText += `
+        //     \`\`\`json
+        //     ${JSON.stringify(detail, null, 2)}
+        //     \`\`\`
+        //     `;
+        // }
 
-        let descText = '## **Keterangan**';
+        // let descText = '## **Keterangan**';
 
-        if (datetime) {
-            descText += `\n* Tanggal ${dayjs(datetime).format('DD MMMM YYYY')}`;
-            descText += `\n* Waktu ${dayjs(datetime).format('HH:mm:ss')}`;
-        }
+        // if (datetime) {
+        //     descText += `\n* Tanggal ${dayjs(datetime).format('DD MMMM YYYY')}`;
+        //     descText += `\n* Waktu ${dayjs(datetime).format('HH:mm:ss')}`;
+        // }
 
-        let emoticon = '';
-        if (code >= 400 && code <= 511) emoticon = '❗';
-        descText += `\n* Status ${code}${emoticon}`;
+        // let emoticon = '';
+        // if (code >= 400 && code <= 511) emoticon = '❗';
+        // descText += `\n* Status ${code}${emoticon}`;
 
-        const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
+        // const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
+
+        const text = `*Bold Text*
+        _Italic Text_
+        [Link Text](https://example.com)
+        \`Inline Code\`
+        \`\`\`
+        Multi-line Code
+        \`\`\`
+        - List Item 1
+        - List Item 2
+        `;
 
         try {
             const chatId = req.chatId;
-            await bot.sendMessage(chatId, errorText, { parse_mode: 'HTML' });
+            await bot.sendMessage(chatId, text, { parse_mode: 'Markdown' });
             return res.status(200).json({
                 status: 0,
                 message: 'Pesan terkirim',

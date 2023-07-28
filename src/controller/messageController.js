@@ -8,9 +8,9 @@ const MessageController = {
 
 
         var text = '';
-        text = `<b>${title.toUpperCase()}</b>`;
+        text = `<b>${title.toUpperCase()}`;
         text += ' | ';
-        text += httpStatus.getReasonPhrase(code) + '\n\n';
+        text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
 
         // if (code) {
         //     var emoticon = '❤️';

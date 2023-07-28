@@ -20,18 +20,25 @@ const MessageController = {
         const lineSeparator = '-'.repeat(50);
 
         var text = '';
-        text = `<b>${title.toUpperCase()}</b>\n\n`;
-        text += `Tanggal: ${currentDate}\n`;
-        text += `Waktu: ${currentTime}\n`;
-        text += `${lineSeparator}\n`;
+        text = `<b>${title.toUpperCase()}</b>\n`;
         if (detail) {
             text += `${detail}\n`;
         } else {
             text += `${message} \n`;
         }
         text += `${lineSeparator}\n`;
-        if (code) text += `Error: <pre>${code}</pre>\n`;
-        if (detail) text += `Message: ${message} `;
+
+        text += `🗓: ${currentDate}\n`;
+        text += `⏱: ${currentTime}\n`;
+
+        if (code) {
+            var emoticon = '❤️';
+            if (code >= 200 && code <= 226) emoticon = '✅';
+            if (code >= 400 && code <= 511) emoticon = '❗';
+            text += `${emoticon}: <pre>${code}</pre>\n`;
+        }
+
+        if (detail) text += `🙊: ${message} `;
 
         try {
             const chatId = req.chatId;

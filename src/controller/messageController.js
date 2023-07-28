@@ -22,7 +22,7 @@ const MessageController = {
         // text += `${lineSeparator}\n`;
 
         if (detail) {
-            text += `<pre>${message}</pre>\n\n`;
+            text += `${message}\n\n`;
             text += `<b>Detail</b>↓\n`;
             text += `<pre><code class="language-json">${detail}</code></pre>\n`;
         } else {
@@ -32,12 +32,12 @@ const MessageController = {
         text += '\n<b>Keterangan</b>\n';
 
         if (datetime) {
-            text += '●Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
-            text += '●Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+            text += '・Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+            text += '・Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
 
             var emoticon = '';
             if (code >= 400 && code <= 511) emoticon = '❗';
-            text += '●Status ' + `${code}` + `${emoticon}`;
+            text += '・Status ' + `${code}` + `${emoticon}`;
         }
 
         try {

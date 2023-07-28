@@ -22,6 +22,8 @@ const MessageController = {
         // text += `${lineSeparator}\n`;
 
         if (detail) {
+            text += `${message}\n\n`;
+            text += `<b>Detail</b>↓\n`;
             text += `<pre><code class="language-json">${detail}</code></pre>\n`;
         } else {
             text += `${message}\n`;

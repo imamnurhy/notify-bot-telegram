@@ -8,30 +8,28 @@ const MessageController = {
         const lineSeparator = '-'.repeat(50);
 
         var text = '';
-        text = `<b>${title.toUpperCase()}</b>\n\n`;
+        text = `<b>${title.toUpperCase()} | ${code}</b>\n\n`;
 
-        if (code) {
-            var emoticon = '❤️';
-            if (code >= 200 && code <= 226) emoticon = '🟢';
-            if (code >= 400 && code <= 511) emoticon = '❗';
-            text += `Status ${code + ' ' + emoticon} \n`;
+        // if (code) {
+        //     var emoticon = '❤️';
+        //     if (code >= 200 && code <= 226) emoticon = '🟢';
+        //     if (code >= 400 && code <= 511) emoticon = '❗';
+        //     text += `Status ${code + ' ' + emoticon} \n`;
+        // }
+
+        // text += `${lineSeparator}\n`;
+
+        if (detail) {
+            text += `🙊 ${detail}\n`;
+        } else {
+            text += `🙊 ${message}\n`;
         }
+
+        text += `${lineSeparator}\n`;
 
         if (datetime) {
             text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
             text += 'Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
-        }
-
-        text += `${lineSeparator}\n`;
-        if (detail) {
-            text += `${detail}\n`;
-        } else {
-            text += `${message} \n`;
-        }
-
-        if (detail) {
-            text += `${lineSeparator}\n`;
-            text += `🙊 ${message} `;
         }
 
         try {

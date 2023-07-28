@@ -11,7 +11,7 @@ const MessageController = {
         var text = '';
         text = `<b>${title.toUpperCase()}</b>`;
         text += ' | ';
-        text += httpStatus.getStatusCode(code) + '\n\n';
+        text += httpStatus.getReasonPhrase(code) + '\n\n';
 
         // if (code) {
         //     var emoticon = '❤️';

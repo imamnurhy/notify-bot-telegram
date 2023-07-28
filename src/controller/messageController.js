@@ -1,27 +1,16 @@
+const dayjs = require("dayjs");
 const bot = require("../utils/telegramBotConfig");
 
 const MessageController = {
     sendMessage: async (req, res) => {
-        const { message, code, title, detail } = req.body;
-
-        const currentDate = new Date().toLocaleDateString('id-ID', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        });
-
-        const currentTime = new Date().toLocaleTimeString('id-ID', {
-            hour: 'numeric',
-            minute: 'numeric',
-            second: 'numeric',
-            hour12: false
-        }).replace(/\./g, ':');
+        const { message, code, title, detail, datetime } = req.body;
 
         const lineSeparator = '-'.repeat(50);
 
         var text = '';
         text = `<b>${title.toUpperCase()}</b>`;
         text += `<b> | </b>`;
+
         if (code) {
             var emoticon = '❤️';
             if (code >= 200 && code <= 226) emoticon = '✅';
@@ -29,7 +18,11 @@ const MessageController = {
             text += `🌐 <b>${code}</b>${emoticon}\n\n`;
         }
 
-        text += `🕰️ ${currentDate}` + ' ' + `${currentTime}\n`;
+        if (datetime) {
+            text += 'Tanggal' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+            text += 'Waktu' + dayjs(datetime).format('HH:mm:ss') + '\n';
+        }
+
         text += `${lineSeparator}\n`;
         if (detail) {
             text += `${detail}\n`;

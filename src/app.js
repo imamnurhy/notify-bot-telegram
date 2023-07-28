@@ -16,4 +16,6 @@ app.get('/', (req, res) => {
 
 app.use('/api', router);
 
+bot.sendMessage(id, "Hola 👋🏻 I'm Alive! 🤖");
+
 module.exports = app;

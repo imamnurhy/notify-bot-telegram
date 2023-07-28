@@ -21,14 +21,14 @@ const MessageController = {
 
         var text = '';
         text = `<b>${title.toUpperCase()}</b>`;
+        text = `<b> | </b>`;
         if (code) {
             var emoticon = '❤️';
             if (code >= 200 && code <= 226) emoticon = '✅';
             if (code >= 400 && code <= 511) emoticon = '❗';
-            text += `🌐: <b>${code}</b>${emoticon}\n`;
+            text += `🌐 <b>${code}</b>${emoticon}\n\n`;
         }
 
-        text += `🕰️ ${currentDate}` + '-' + `${currentTime}\n`;
         text += `${lineSeparator}\n`;
         if (detail) {
             text += `${detail}\n`;
@@ -36,6 +36,7 @@ const MessageController = {
             text += `${message} \n`;
         }
         text += `${lineSeparator}\n`;
+        text += `🕰️ ${currentDate}` + ' ' + `${currentTime}\n`;
 
         if (detail) text += `🙊 ${message} `;
 

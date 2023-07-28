@@ -4,7 +4,7 @@ const encodeWithSecretKey = (id) => {
 }
 
 const decodeWithSecretKey = (encryptedID) => {
-    const buffer = Buffer.from(encryptedText, 'base64');
+    const buffer = Buffer.from(encryptedID, 'base64');
     return buffer.toString('utf-8');
 };
 

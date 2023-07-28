@@ -39,6 +39,7 @@ module.exports = async (request, response) => {
                     let textMessage = '✅ Berhasil membuat kode akses: ';
                     var accessKey = encodeWithSecretKey(id);
                     textMessage += `<pre>${accessKey}</pre>`;
+                    textMessage += ` | ${id}`;
 
                     await bot.sendMessage(id, textMessage, {
                         parse_mode: 'HTML'

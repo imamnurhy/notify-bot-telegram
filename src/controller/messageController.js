@@ -24,11 +24,14 @@ const MessageController = {
         text += `Tanggal: ${currentDate}\n`;
         text += `Waktu: ${currentTime}\n`;
         text += `${lineSeparator}\n`;
-        if (!detail) text += `${detail}\n`;
-        if (detail) text += `${message} \n`;
+        if (detail) {
+            text += `${detail}\n`;
+        } else {
+            text += `${message} \n`;
+        }
         text += `${lineSeparator}\n`;
-        if (!code) text += `Error: <pre>${code}</pre>\n`;
-        if (!message && !detail) text += `Message: ${message} `;
+        if (code) text += `Error: <pre>${code}</pre>\n`;
+        if (detail) text += `Message: ${message} `;
 
         try {
             const chatId = req.chatId;

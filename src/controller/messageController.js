@@ -40,48 +40,32 @@ const MessageController = {
 
         const titleText = `**${title.toUpperCase()} | ${httpStatus.getReasonPhrase(code)}**`;
 
-        // const messageText = `${message}`;
+        const messageText = `${message}`;
 
-        // let detailText = '';
-        // if (detail) {
-        //     detailText = '## **Detail**';
-        //     detailText += `
-        //     \`\`\`json
-        //     ${JSON.stringify(detail, null, 2)}
-        //     \`\`\`
-        //     `;
-        // }
+        let detailText = '';
+        if (detail) {
+            detailText = '**Detail**';
+            detailText += `\`\`\`json
+            ${detail}
+            \`\`\``;
+        }
 
-        // let descText = '## **Keterangan**';
+        let descText = '**Keterangan**';
 
-        // if (datetime) {
-        //     descText += `\n* Tanggal ${dayjs(datetime).format('DD MMMM YYYY')}`;
-        //     descText += `\n* Waktu ${dayjs(datetime).format('HH:mm:ss')}`;
-        // }
+        if (datetime) {
+            descText += `* Tanggal ${dayjs(datetime).format('DD MMMM YYYY')}`;
+            descText += `* Waktu ${dayjs(datetime).format('HH:mm:ss')}`;
+        }
 
-        // let emoticon = '';
-        // if (code >= 400 && code <= 511) emoticon = '❗';
-        // descText += `\n* Status ${code}${emoticon}`;
+        let emoticon = '';
+        if (code >= 400 && code <= 511) emoticon = '❗';
+        descText += `* Status ${code}${emoticon}`;
 
-        // const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
-
-        const text = `*bold text*
-_italic text_
-[inline URL](http://www.example.com/)
-[inline mention of a user](tg://user?id=123456789)
-\`${message}\`
-
-\`\`\`
-${message}
-\`\`\`
-
-\`\`\`json
-${detail}
-\`\`\``;
+        const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
 
         try {
             const chatId = req.chatId;
-            await bot.sendMessage(chatId, text, { parse_mode: 'Markdown' });
+            await bot.sendMessage(chatId, errorText, { parse_mode: 'Markdown' });
             return res.status(200).json({
                 status: 0,
                 message: 'Pesan terkirim',

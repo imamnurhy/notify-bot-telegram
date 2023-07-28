@@ -13,7 +13,7 @@ module.exports = async (request, response) => {
             const { chat: { id }, text } = body.message;
 
             const startCommand = (command) => /\/start/.test(command);
-            if (startCommand(text)) await bot.sendMessage(id, 'Hola 👋🏻 I an Alive! 🤖');
+            if (startCommand(text)) await bot.sendMessage(id, "Hola 👋🏻 I'm Alive");
 
             let textMessage = '';
             textMessage += '🎉 Hallo selamat datang ';

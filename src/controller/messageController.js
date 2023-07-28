@@ -30,9 +30,12 @@ const MessageController = {
         text += '\nKet:\n';
 
         if (datetime) {
-            text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
-            text += 'Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
-            text += 'Status ' + `${code}`;
+            text += '•Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+            text += '•Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+
+            var emoticon = '';
+            if (code >= 400 && code <= 511) emoticon = '❗';
+            text += '•Status ' + `${code}` + `${emoticon}`;
         }
 
         try {

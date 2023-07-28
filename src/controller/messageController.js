@@ -19,8 +19,8 @@ const MessageController = {
         }
 
         if (datetime) {
-            text += 'Tanggal' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
-            text += 'Waktu' + dayjs(datetime).format('HH:mm:ss') + '\n';
+            text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+            text += 'Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
         }
 
         text += `${lineSeparator}\n`;

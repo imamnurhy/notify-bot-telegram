@@ -33,9 +33,9 @@ const MessageController = {
 
         if (code) {
             var emoticon = '❤️';
-            if (code >= 200 && code <= 226) emoticon = '✅';
+            if (code >= 200 && code <= 226) emoticon = ' ✅';
             if (code >= 400 && code <= 511) emoticon = '❗';
-            text += `${emoticon}: <pre>${code}</pre>\n`;
+            text += `🌐: ${code + emoticon}\n`;
         }
 
         if (detail) text += `🙊: ${message} `;

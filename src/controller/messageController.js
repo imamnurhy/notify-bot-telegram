@@ -21,7 +21,7 @@ const MessageController = {
 
         var text = '';
         text = `<b>${title.toUpperCase()}</b>`;
-        text = `<b> | </b>`;
+        text += `<b> | </b>`;
         if (code) {
             var emoticon = '❤️';
             if (code >= 200 && code <= 226) emoticon = '✅';

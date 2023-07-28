@@ -27,7 +27,7 @@ const MessageController = {
             text += `🙊 ${message}\n`;
         }
 
-        text += '-'.repeat(20) + '\n';
+        text += 'Ket:\n';
 
         if (datetime) {
             text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';

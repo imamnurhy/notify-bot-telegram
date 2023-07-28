@@ -15,12 +15,21 @@ const MessageController = {
             minute: 'numeric',
             second: 'numeric',
             hour12: false
-        });
+        }).replace(/\./g, ':');
 
         const lineSeparator = '-'.repeat(50);
 
         var text = '';
-        text = `<b>${title.toUpperCase()}</b>\n`;
+        text = `<b>${title.toUpperCase()}</b>`;
+        if (code) {
+            var emoticon = '❤️';
+            if (code >= 200 && code <= 226) emoticon = '✅';
+            if (code >= 400 && code <= 511) emoticon = '❗';
+            text += `🌐: <b>${code}</b>${emoticon}\n`;
+        }
+
+        text += `🕰️ ${currentDate}` + '-' + `${currentTime}\n`;
+        text += `${lineSeparator}\n`;
         if (detail) {
             text += `${detail}\n`;
         } else {
@@ -28,17 +37,7 @@ const MessageController = {
         }
         text += `${lineSeparator}\n`;
 
-        text += `🗓: ${currentDate}\n`;
-        text += `⏱: ${currentTime}\n`;
-
-        if (code) {
-            var emoticon = '❤️';
-            if (code >= 200 && code <= 226) emoticon = ' ✅';
-            if (code >= 400 && code <= 511) emoticon = '❗';
-            text += `🌐: ${code + emoticon}\n`;
-        }
-
-        if (detail) text += `🙊: ${message} `;
+        if (detail) text += `🙊 ${message} `;
 
         try {
             const chatId = req.chatId;

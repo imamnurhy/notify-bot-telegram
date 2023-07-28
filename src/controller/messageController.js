@@ -66,15 +66,15 @@ const MessageController = {
         // const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
 
         const text = `*Bold Text*
-        _Italic Text_
-        [Link Text](https://example.com)
-        \`Inline Code\`
-        \`\`\`json
-        ${JSON.stringify(detail, null, 2)}
-        \`\`\`
-        - List Item 1
-        - List Item 2
-        `;
+_Italic Text_
+[Link Text](https://example.com)
+\`Inline Code\`
+\`\`\`json
+${detail}
+\`\`\`
+- List Item 1
+- List Item 2
+`;
 
         try {
             const chatId = req.chatId;

@@ -70,9 +70,11 @@ _italic text_
 [inline URL](http://www.example.com/)
 [inline mention of a user](tg://user?id=123456789)
 \`${message}\`
+
 \`\`\`
-pre - formatted fixed - width code block
+${message}
 \`\`\`
+
 \`\`\`json
 ${detail}
 \`\`\``;

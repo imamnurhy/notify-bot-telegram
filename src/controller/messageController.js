@@ -6,7 +6,6 @@ const MessageController = {
     sendMessage: async (req, res) => {
         const { message, code, title, detail, datetime } = req.body;
 
-        const lineSeparator = '-'.repeat(35);
 
         var text = '';
         text = `<b>${title.toUpperCase()}</b>`;
@@ -28,12 +27,12 @@ const MessageController = {
             text += `🙊 ${message}\n`;
         }
 
-        text += `${lineSeparator}\n`;
+        text += '-'.repeat(20) + '\n';
 
         if (datetime) {
-            text += '🗓 ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
-            text += '⏰ ' + dayjs(datetime).format('HH:mm:ss') + '\n';
-            text += '🌐 ' + `${code}`;
+            text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+            text += 'Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+            text += 'Status ' + `${code}`;
         }
 
         try {

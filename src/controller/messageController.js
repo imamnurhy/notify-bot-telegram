@@ -38,7 +38,7 @@ const MessageController = {
         //     text += '•Status ' + `${code}` + `${emoticon}`;
         // }
 
-        // const titleText = `# **${title.toUpperCase()} | ${httpStatus.getReasonPhrase(code)}**`;
+        const titleText = `**${title.toUpperCase()} | ${httpStatus.getReasonPhrase(code)}**`;
 
         // const messageText = `${message}`;
 
@@ -65,16 +65,17 @@ const MessageController = {
 
         // const errorText = `${titleText}\n\n${messageText}\n\n${detailText}\n${descText}`;
 
-        const text = `*Bold Text*
-_Italic Text_
-[Link Text](https://example.com)
-\`Inline Code\`
+        const text = `*bold text*
+_italic text_
+[inline URL](http://www.example.com/)
+[inline mention of a user](tg://user?id=123456789)
+\`${message}\`
+\`\`\`
+pre - formatted fixed - width code block
+\`\`\`
 \`\`\`json
 ${detail}
-\`\`\`
-- List Item 1
-- List Item 2
-`;
+\`\`\``;
 
         try {
             const chatId = req.chatId;

@@ -40,7 +40,7 @@ const MessageController = {
 
         try {
             const chatId = req.chatId;
-            await bot.sendMessage(chatId, messageText, { parse_mode: 'HTML' });
+            await bot.sendMessage(chatId, text, { parse_mode: 'HTML' });
             return res.status(200).json({
                 status: 0,
                 message: 'Pesan terkirim',

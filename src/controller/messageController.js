@@ -22,12 +22,12 @@ const MessageController = {
         // text += `${lineSeparator}\n`;
 
         if (detail) {
-            text += `🙊 ${detail}\n`;
+            text += `${detail}\n`;
         } else {
-            text += `🙊 ${message}\n`;
+            text += `${message}\n`;
         }
 
-        text += 'Ket:\n';
+        text += '\nKet:\n';
 
         if (datetime) {
             text += 'Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';

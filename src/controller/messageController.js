@@ -1,5 +1,6 @@
 const dayjs = require("dayjs");
 const bot = require("../utils/telegramBotConfig");
+const httpStatus = require('http-status-codes');
 
 const MessageController = {
     sendMessage: async (req, res) => {
@@ -8,7 +9,9 @@ const MessageController = {
         const lineSeparator = '-'.repeat(35);
 
         var text = '';
-        text = `<b>${title.toUpperCase()} | ${code}</b>\n\n`;
+        text = `<b>${title.toUpperCase()}</b>`;
+        text += ' | ';
+        text += httpStatus.getStatusCode(code) + '\n\n';
 
         // if (code) {
         //     var emoticon = '❤️';
@@ -30,6 +33,7 @@ const MessageController = {
         if (datetime) {
             text += '🗓 ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
             text += '⏰ ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+            text += '🌐 ' + `${code}`;
         }
 
         try {

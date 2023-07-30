@@ -9,7 +9,7 @@ const MessageController = {
         var text = '';
         text = `<b>${title.toUpperCase()}`;
 
-        if (code) {
+        if (!code) {
             text += ' | ';
             text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
         }
@@ -28,7 +28,7 @@ const MessageController = {
             text += '・Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
             text += '・Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
 
-            if (code) {
+            if (!code) {
                 var emoticon = '';
                 if (code >= 400 && code <= 511) emoticon = '❗';
                 text += '・Status ' + `${code}` + `${emoticon}`;

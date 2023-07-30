@@ -9,10 +9,10 @@ const MessageController = {
         var text = '';
         text = `<b>${title.toUpperCase()}`;
 
-        if (!code) {
-            text += ' | ';
-            text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
-        }
+        // if (code) {
+        //     text += ' | ';
+        //     text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
+        // }
 
         if (detail) {
             text += `${message}\n\n`;
@@ -22,18 +22,18 @@ const MessageController = {
             text += `${message}\n`;
         }
 
-        text += '\n<b>Keterangan</b>\n';
+        // text += '\n<b>Keterangan</b>\n';
 
-        if (datetime) {
-            text += '・Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
-            text += '・Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+        // if (datetime) {
+        //     text += '・Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
+        //     text += '・Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
+        // }
 
-            if (!code) {
-                var emoticon = '';
-                if (code >= 400 && code <= 511) emoticon = '❗';
-                text += '・Status ' + `${code}` + `${emoticon}`;
-            }
-        }
+        // if (code) {
+        //     var emoticon = '';
+        //     if (code >= 400 && code <= 511) emoticon = '❗';
+        //     text += '・Status ' + `${code}` + `${emoticon}`;
+        // }
 
         try {
             const chatId = req.chatId;

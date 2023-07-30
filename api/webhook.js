@@ -5,7 +5,7 @@ process.env.NTBA_FIX_319 = 'test';
 const { encodeWithSecretKey } = require('../src/utils/crypto');
 const bot = require('../src/utils/telegramBotConfig');
 
-const subscribeMessage = async () => {
+const subscribeMessage = async (id) => {
     let textMessage = '🎉 Hallo selamat datang di Api Telegram Bot! 🤖';
     await bot.sendMessage(id, textMessage, {
         reply_markup: {
@@ -29,14 +29,14 @@ module.exports = async (request, response) => {
             const match = text.match(/\/start (.+)/);
             if (startCommand(text)) {
                 if (match && match[1].toLowerCase() === 'subscribe') {
-                    await subscribeMessage();
+                    await subscribeMessage(id);
                 }
                 await bot.sendMessage(id, "Hola 👋🏻");
             }
 
             const subscribeCommand = (command) => /\/subscribe/.test(command);
             if (subscribeCommand(text)) {
-                await subscribeMessage();
+                await subscribeMessage(id);
             }
 
         }

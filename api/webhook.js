@@ -30,8 +30,9 @@ module.exports = async (request, response) => {
             if (startCommand(text)) {
                 if (match && match[1].toLowerCase() === 'subscribe') {
                     await subscribeMessage(id);
+                } else {
+                    await bot.sendMessage(id, "Hola 👋🏻");
                 }
-                await bot.sendMessage(id, "Hola 👋🏻");
             }
 
             const subscribeCommand = (command) => /\/subscribe/.test(command);

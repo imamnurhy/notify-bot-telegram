@@ -6,20 +6,11 @@ const MessageController = {
     sendMessage: async (req, res) => {
         const { message, code, title, detail, datetime } = req.body;
 
-
         var text = '';
         text = `<b>${title.toUpperCase()}`;
         text += ' | ';
         text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
 
-        // if (code) {
-        //     var emoticon = '❤️';
-        //     if (code >= 200 && code <= 226) emoticon = '🟢';
-        //     if (code >= 400 && code <= 511) emoticon = '❗';
-        //     text += `Status ${code + ' ' + emoticon} \n`;
-        // }
-
-        // text += `${lineSeparator}\n`;
 
         if (detail) {
             text += `${message}\n\n`;

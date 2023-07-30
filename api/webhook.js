@@ -5,6 +5,19 @@ process.env.NTBA_FIX_319 = 'test';
 const { encodeWithSecretKey } = require('../src/utils/crypto');
 const bot = require('../src/utils/telegramBotConfig');
 
+const subscribeMessage = async () => {
+    let textMessage = '🎉 Hallo selamat datang di Api Telegram Bot! 🤖';
+    await bot.sendMessage(id, textMessage, {
+        reply_markup: {
+            inline_keyboard: [
+                [
+                    { text: 'Request Kode', callback_data: 'request' },
+                ],
+            ]
+        }
+    });
+}
+
 module.exports = async (request, response) => {
     try {
         const { body } = request;
@@ -13,22 +26,19 @@ module.exports = async (request, response) => {
             const { chat: { id }, text } = body.message;
 
             const startCommand = (command) => /\/start/.test(command);
-            if (startCommand(text)) await bot.sendMessage(id, "Hola 👋🏻 I'm Alive");
-
-            let textMessage = '';
-            textMessage += '🎉 Hallo selamat datang ';
-            textMessage += 'di Api Telegram Bot! 🤖';
+            const match = text.match(/\/start (.+)/);
+            if (startCommand(text)) {
+                if (match && match[1].toLowerCase() === 'subscribe') {
+                    await subscribeMessage();
+                }
+                await bot.sendMessage(id, "Hola 👋🏻");
+            }
 
             const subscribeCommand = (command) => /\/subscribe/.test(command);
-            if (subscribeCommand(text)) await bot.sendMessage(id, textMessage, {
-                reply_markup: {
-                    inline_keyboard: [
-                        [
-                            { text: 'Request Kode', callback_data: 'request' },
-                        ],
-                    ]
-                }
-            });
+            if (subscribeCommand(text)) {
+                await subscribeMessage();
+            }
+
         }
 
         if (body.callback_query) {

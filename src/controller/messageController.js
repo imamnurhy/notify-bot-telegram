@@ -8,9 +8,11 @@ const MessageController = {
 
         var text = '';
         text = `<b>${title.toUpperCase()}`;
-        text += ' | ';
-        text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
 
+        if (code) {
+            text += ' | ';
+            text += httpStatus.getReasonPhrase(code) + '</b>\n\n';
+        }
 
         if (detail) {
             text += `${message}\n\n`;
@@ -26,9 +28,11 @@ const MessageController = {
             text += '・Tanggal ' + dayjs(datetime).format('DD MMMM YYYY') + '\n';
             text += '・Waktu ' + dayjs(datetime).format('HH:mm:ss') + '\n';
 
-            var emoticon = '';
-            if (code >= 400 && code <= 511) emoticon = '❗';
-            text += '・Status ' + `${code}` + `${emoticon}`;
+            if (code) {
+                var emoticon = '';
+                if (code >= 400 && code <= 511) emoticon = '❗';
+                text += '・Status ' + `${code}` + `${emoticon}`;
+            }
         }
 
         try {

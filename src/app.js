@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Selamat data di Tebot Api').status(200);
+    res.send('Selamat data di Tebot Apis').status(200);
 });
 
 app.use('/api', router);

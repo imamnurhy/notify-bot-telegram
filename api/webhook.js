@@ -2,7 +2,7 @@
 // Fixes an error with Promise cancellation
 process.env.NTBA_FIX_319 = 'test';
 
-const { encodeWithSecretKey } = require('../src/utils/crypto');
+const { encodeWithSecretKey, decodeWithSecretKey } = require('../src/utils/crypto');
 const bot = require('../src/utils/telegramBotConfig');
 
 const subscribeMessage = async (id) => {
@@ -49,6 +49,7 @@ module.exports = async (request, response) => {
                 case 'request':
                     let textMessage = '✅ Berhasil membuat kode akses: ';
                     var accessKey = encodeWithSecretKey(id);
+
                     textMessage += `<pre>${accessKey}</pre>`;
 
                     await bot.sendMessage(id, textMessage, {

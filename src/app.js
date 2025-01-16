@@ -3,13 +3,17 @@ const cors = require('cors')
 const app = express();
 const router = require('./routes');
 const bot = require('./utils/telegramBotConfig');
-const moment = require('moment-timezone');
+const dayjs = require("dayjs");
+var utc = require("dayjs/plugin/utc");
+var timezone = require("dayjs/plugin/timezone");
 
 // Webhook URL
 bot.setWebHook(`${process.env.APP_URL}/api/webhook`);
 
-// Defalut Timezone
-moment.tz.setDefault(process.env.APP_TIMEZONE || 'UTC');
+// Default Timezone
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault(process.env.TIMEZONE || 'Asia/Jakarta');
 
 app.use(cors())
 app.use(express.json());
